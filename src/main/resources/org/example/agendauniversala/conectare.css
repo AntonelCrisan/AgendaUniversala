@@ -1,0 +1,24 @@
+#conectareButon:hover{
+    -fx-scale-y: 1.1;
+    -fx-scale-x: 1.1;
+}
+#conectareButon{
+    -fx-background-color: #2a62bc;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-cursor: hand;
+}
+#iesireButon:hover{
+     -fx-scale-y: 1.2;
+     -fx-scale-x: 1.2;
+}
+#numeCamp, #parolaCamp{
+    -fx-background-color: #f0f0f0;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #2a62bc;
+}
+#parolaUitata:hover{
+    -fx-cursor: hand;
+    -fx-underline: true;
+}

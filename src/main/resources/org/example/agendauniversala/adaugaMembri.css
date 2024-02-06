@@ -1,0 +1,19 @@
+#numeCamp, #numeUtilizatorCamp, #emailCamp, #telefonCamp, #rol{
+    -fx-background-color: #f0f0f0;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #2a62bc;
+}
+#parolaButon:hover, #adaugaButon:hover, #inchideAdaugareMembri:hover, #inchideMesaj:hover{
+    -fx-scale-y: 1.1;
+    -fx-scale-x: 1.1;
+    -fx-cursor: hand;
+}
+#rol:hover{
+-fx-cursor: hand;
+}
+#parolaButon, #adaugaButon, #inchideMesaj{
+    -fx-background-color: #2a62bc;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}

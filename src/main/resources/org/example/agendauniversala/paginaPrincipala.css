@@ -1,0 +1,14 @@
+#inchideMeniu:hover, #deschideMeniu:hover{
+     -fx-scale-y: 1.1;
+     -fx-scale-x: 1.1;
+}
+#setari:hover, #afisareMembri:hover, #adaugareMembri:hover, #deconectare:hover{
+    -fx-cursor: hand;
+    -fx-background-color: #e1e1e1;
+}
+#sarcini:hover, #calendar:hover, #filtreaza:hover, #sorteaza:hover, #cauta:hover, #adaugaSarcina:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+

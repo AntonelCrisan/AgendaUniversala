@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="790.0" style="-fx-background-color: #f5f5f5;" stylesheets="@conectare.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.agendauniversala.PaginaConectare">
+   <right>
+      <AnchorPane accessibleRole="BUTTON" prefHeight="460.0" prefWidth="361.0" style="-fx-background-color: #f5f5f5;" stylesheets="@conectare.css" BorderPane.alignment="CENTER">
+         <children>
+            <Group layoutX="76.0" layoutY="203.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-37.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/username.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-37.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/padlock_12515914%20(1).png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="numeCamp" layoutY="-2.0" prefHeight="35.0" prefWidth="248.0" promptText="Nume utilizator" />
+                  <PasswordField fx:id="parolaCamp" layoutY="62.0" prefHeight="35.0" prefWidth="248.0" promptText="Parola" />
+               </children>
+            </Group>
+            <Button fx:id="conectareButon" layoutX="132.0" layoutY="398.0" mnemonicParsing="false" onAction="#conenctareButonAct" prefHeight="35.0" prefWidth="100.0" text="Conectare" textFill="WHITE" />
+            <Label layoutX="113.0" layoutY="120.0" text="CONECTARE" textFill="#2a62bc">
+               <font>
+                  <Font name="Inter Regular" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="eroareMesaj" alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="359.0" prefHeight="18.0" prefWidth="248.0" textAlignment="CENTER" textFill="#ec1a1a" wrapText="true">
+               <font>
+                  <Font name="Inter Regular" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="iesireButon" layoutX="341.0" mnemonicParsing="false" onAction="#iesireButonAct" style="-fx-background-color: transparent;" text="x" textFill="#2a62bc">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <padding>
+                  <Insets bottom="-3.0" left="-3.0" right="-3.0" top="-3.0" />
+               </padding>
+            </Button>
+            <Label fx:id="parolaUitata" layoutX="244.0" layoutY="319.0" text="Ai uitat parola?" textFill="#2a62bc" />
+            <CheckBox layoutX="75.0" layoutY="319.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Ține-mă minte" textFill="#2a62bc" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </AnchorPane>
+   </right>
+   <center>
+      <AnchorPane prefHeight="460.0" prefWidth="437.0" style="-fx-background-color: #4286f4;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="500.0" fitWidth="429.0" opacity="0.6" pickOnBounds="true">
+               <image>
+                  <Image url="@icons/backgorund.jpg" />
+               </image>
+            </ImageView>
+            <Group layoutX="56.0" layoutY="145.0">
+               <children>
+                  <Label contentDisplay="CENTER" layoutY="27.0" text="BINE AI REVENIT" textAlignment="CENTER" textFill="WHITESMOKE">
+                     <font>
+                        <Font name="Inter Regular" size="40.0" />
+                     </font>
+                  </Label>
+                  <TextFlow layoutX="145.0" layoutY="119.0" />
+                  <Label layoutY="108.0" prefHeight="84.0" prefWidth="317.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper, sem vel ultrices facilisis, augue risus vulputate massa, vel ornare quam ex sit amet dui. " textAlignment="CENTER" textFill="#f5f5f5e5" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font name="Inter Regular" size="12.0" />
+                     </font></Label>
+                  <Separator layoutX="92.0" layoutY="76.0" prefHeight="30.0" prefWidth="107.0" />
+               </children>
+            </Group>
+            <ImageView fitHeight="35.0" fitWidth="87.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/logoipsum-288.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
