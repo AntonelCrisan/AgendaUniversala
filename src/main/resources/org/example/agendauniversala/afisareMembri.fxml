@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="afisareMembri" prefHeight="750.0" prefWidth="1300.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #dedcdc;" stylesheets="@styles/afisareMembri.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.agendauniversala.PaginaAfisareMembri">
+   <children>
+      <Pane fx:id="containerAfisareMembri" prefHeight="750.0" prefWidth="1300.0">
+         <children>
+            <TableView fx:id="membriTabel" layoutX="56.0" layoutY="176.0" onMouseClicked="#randSelectat" prefHeight="486.0" prefWidth="1207.0" stylesheets="@styles/tabel.css">
+               <columns>
+                  <TableColumn fx:id="numePrenumeCol" prefWidth="197.20001220703125" text="Nume si prenume" />
+                  <TableColumn fx:id="numeUtilizatorCol" prefWidth="294.59999084472656" text="Nume utilizator" />
+                  <TableColumn fx:id="emailCol" prefWidth="206.4000244140625" text="Email" />
+                  <TableColumn fx:id="telefonCol" prefWidth="190.4000244140625" text="Telefon" />
+                  <TableColumn fx:id="rolCol" minWidth="0.0" prefWidth="187.99993896484375" text="Rol" />
+                  <TableColumn fx:id="statusCol" prefWidth="124.0" text="Status" />
+               </columns>
+            </TableView>
+            <Label layoutX="606.0" layoutY="36.0" text="MEMBRI" textFill="#2a62bc">
+               <font>
+                  <Font name="Inter Regular" size="22.0" />
+               </font>
+            </Label>
+            <TextField fx:id="campCautaNumeUtilizator" layoutX="122.0" layoutY="112.0" prefHeight="35.0" prefWidth="226.0" promptText="Nume utilizator" />
+            <Button fx:id="stergeMembruButon" layoutX="1163.0" layoutY="121.0" mnemonicParsing="false" onAction="#stergereMembru" prefHeight="35.0" prefWidth="100.0" text="Șterge" />
+            <Button fx:id="editareButon" layoutX="1040.0" layoutY="121.0" mnemonicParsing="false" onAction="#editareMembru" prefHeight="35.0" prefWidth="100.0" text="Editare" />
+            <Button fx:id="cautaUtilizator" layoutX="56.0" layoutY="112.0" mnemonicParsing="false" onAction="#cautaMembru" prefHeight="35.0" text="Caută" />
+            <Button fx:id="inchideAfisareMembri" layoutX="1270.0" layoutY="1.0" mnemonicParsing="false" onAction="#inchidePagina" prefHeight="22.0" prefWidth="22.0" text="X" textFill="#2a62bc">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="eroare" layoutX="122.0" layoutY="156.0" prefHeight="15.0" prefWidth="239.0" textFill="#ec1a1a">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="inchideCautare" layoutX="358.0" layoutY="114.0" mnemonicParsing="false" onAction="#inchideCautareAct" style="-fx-background-color: transparent; -fx-cursor: hand;" text="X" textFill="#2a62bc" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="reimprospatareTabel" layoutX="57.0" layoutY="671.0" mnemonicParsing="false" onAction="#reimprospatareTabelAct" prefHeight="35.0" text="Reîmprospătare tabel" />
+         </children>
+      </Pane>
+      <Pane fx:id="editarePane" layoutX="427.0" layoutY="71.0" prefHeight="665.0" prefWidth="444.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #dedcdc;" visible="false">
+         <children>
+            <TextField fx:id="numeCamp" layoutX="37.0" layoutY="131.0" prefHeight="35.0" prefWidth="370.0" promptText="Nume și prenume" />
+            <TextField fx:id="numeUtilizatorCamp" layoutX="37.0" layoutY="213.0" prefHeight="35.0" prefWidth="370.0" promptText="Nume utilizator" />
+            <TextField fx:id="emailCamp" layoutX="37.0" layoutY="298.0" prefHeight="35.0" prefWidth="370.0" promptText="Email" />
+            <TextField fx:id="telefonCamp" layoutX="37.0" layoutY="383.0" prefHeight="35.0" prefWidth="370.0" promptText="Telefon" />
+            <ChoiceBox fx:id="rol" layoutX="37.0" layoutY="475.0" prefHeight="35.0" prefWidth="370.0" />
+            <Button fx:id="salveazaButon" layoutX="80.0" layoutY="598.0" mnemonicParsing="false" onAction="#salvareEditareMembru" prefHeight="35.0" prefWidth="100.0" text="Salvează" />
+            <Button fx:id="curataButon" layoutX="265.0" layoutY="598.0" mnemonicParsing="false" onAction="#curatareCampuri" prefHeight="35.0" prefWidth="100.0" text="Curăță" />
+            <Label layoutX="125.0" layoutY="47.0" text="EDITARE MEMBRU" textFill="#2a62bc">
+               <font>
+                  <Font name="Inter Regular" size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="inchideEditareMembru" layoutX="413.0" layoutY="1.0" mnemonicParsing="false" onAction="#inchideEditareMembru" text="X" textFill="#2a62bc">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="eroareNume" layoutX="42.0" layoutY="173.0" textFill="#ec1a1a">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font></Label>
+            <Label fx:id="eroareNumeUtilizator" layoutX="42.0" layoutY="255.0" textFill="#ec1a1a" />
+            <Label fx:id="eroareEmail" layoutX="42.0" layoutY="341.0" textFill="#ec1a1a">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font></Label>
+            <Label fx:id="eroareTelefon" layoutX="42.0" layoutY="426.0" textFill="#ec1a1a" />
+            <Label fx:id="eroareRol" layoutX="42.0" layoutY="519.0" textFill="#ec1a1a" />
+            <Label fx:id="eroareEditare" alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="556.0" prefHeight="20.0" prefWidth="370.0" textFill="#ec1a1a">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label layoutX="37.0" layoutY="456.0" text="Rol">
+               <font>
+                  <Font name="Inter Regular" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="atentionareStergere" layoutX="469.0" layoutY="252.0" prefHeight="309.0" prefWidth="354.0" style="-fx-background-color: #ffffff; -fx-border-color: #dedcdc;" visible="false">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="127.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/triangle-exclamation-solid.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="33.0" layoutY="155.0" text="Ești sigur că vrei să ștergi acest membru?">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Button fx:id="stergereMembru" layoutX="43.0" layoutY="242.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Șterge" />
+            <Button fx:id="anulare" layoutX="211.0" layoutY="242.0" mnemonicParsing="false" onAction="#anulareStergere" prefHeight="35.0" prefWidth="100.0" text="Anulează" />
+         </children>
+      </Pane>
+      <Pane fx:id="mesajSucces" layoutX="471.0" layoutY="275.0" prefHeight="250.0" prefWidth="350.0" style="-fx-background-color: #ffffff; -fx-border-color: #dedcdc;" visible="false">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="125.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/succes.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="mesajInformare" layoutX="80.0" layoutY="125.0" textFill="#30ec30">
+               <font>
+                  <Font name="Inter Regular" size="16.0" />
+               </font></Label>
+            <Button fx:id="inchideMesajSucces" layoutX="125.0" layoutY="184.0" mnemonicParsing="false" onAction="#inchideMesajSucces" prefHeight="35.0" prefWidth="100.0" text="Ok" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

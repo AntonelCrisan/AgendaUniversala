@@ -1,5 +1,4 @@
 package org.example.agendauniversala;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,6 +10,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -21,7 +21,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
 public class PaginaAdaugareMembri implements Initializable {
     @FXML
     public Button inchideAdaugareMembri;
@@ -35,14 +34,35 @@ public class PaginaAdaugareMembri implements Initializable {
     @FXML
     public TextField telefonCamp;
     @FXML
-    public Button parolaButon;
+    public Label genereazaParola;
+    @FXML
     public Label parolaGenerata;
     @FXML
-    public Label mesaj;
+    public Label mesajEroare;
+    @FXML
     public Pane mesajSucces;
+    @FXML
+    public Pane campParola;
+    @FXML
     public Button inchideMesaj;
     @FXML
     public ChoiceBox<String> rol;
+    @FXML
+    public Label eroareNume;
+    @FXML
+    public Label eroareNumeUtilizator;
+    @FXML
+    public Label eroareEmail;
+    @FXML
+    public Label eroareTelefon;
+    @FXML
+    public Label eroareParola;
+    @FXML
+    public Label eroareRol;
+    @FXML
+    public AnchorPane paginaAdaugaMembru;
+    @FXML
+    public Pane containerAdaugareMembri;
     private double xOffset = 0;
     private double yOffset = 0;
     private final String[] alegereRol = {"Admin", "Profesor", "Secretar", "Contabil"};
@@ -52,21 +72,31 @@ public class PaginaAdaugareMembri implements Initializable {
     }
     public void inchideMesajAct(ActionEvent e){
         mesajSucces.setVisible(false);
+        containerAdaugareMembri.setStyle("-fx-opacity: 1");
     }
     public void adaugareMembru(ActionEvent e){
         String email = emailCamp.getText();
         boolean esteValid = isValidEmailDomain(email);
+        String nume = numeCamp.getText();
+        String numeUtilizator = numeUtilizatorCamp.getText();
+        String emailC = emailCamp.getText();
+        String telefon = telefonCamp.getText();
+        String parola = parolaGenerata.getText();
+        ValidareCampuri.validareAdaugareMembri(nume, numeUtilizator, emailC, telefon, parola, rol, eroareNume, eroareNumeUtilizator,
+                eroareEmail, eroareTelefon, eroareParola, eroareRol, mesajEroare, numeCamp, numeUtilizatorCamp, emailCamp, telefonCamp,
+                campParola);
         if(numeCamp.getText().isEmpty() || numeUtilizatorCamp.getText().isEmpty() || emailCamp.getText().isEmpty() || telefonCamp.getText().isEmpty() ||
-            parolaGenerata.getText().isEmpty() || rol.getValue() == null){
-            mesaj.setText("Toate câmpurile sunt obligatorii!");
-            mesaj.setStyle("-fx-text-fill: #ec1a1a");
-        }else if(telefonCamp.getText().length() != 10){
-            mesaj.setText("Numarul de telefon trebuie sa contina 10 caractere!");
-            mesaj.setStyle("-fx-text-fill: #ec1a1a");
-        }else if(esteValid){
+                parolaGenerata.getText().isEmpty() || rol.getValue() == null) {
+        }else if(telefonCamp.getText().length() != 10) {
+            eroareTelefon.setText("Numărul de telefon trebuie să conțină 10 caractere!");
+            telefonCamp.setStyle("-fx-border-color: #ec1a1a");
+            mesajEroare.setText("");
+        }else if(esteValid) {
+            telefonCamp.setStyle(null);
+            eroareTelefon.setText("");
             PreparedStatement ps;
             ConectareBD conectare = new ConectareBD();
-            try{
+            try {
                 conectare.conectareBD();
                 Connection con = conectare.con;
                 ps = con.prepareStatement("insert into users(name,username, email, phone, password, role) values(?, ?, ?, ?, ?, ?)");
@@ -78,33 +108,39 @@ public class PaginaAdaugareMembri implements Initializable {
                 ps.setString(6, rol.getValue());
                 ps.executeUpdate();
                 mesajSucces.setVisible(true);
-                mesaj.setText(null);
-                numeCamp.setText(null);
-                numeUtilizatorCamp.setText(null);
-                emailCamp.setText(null);
-                telefonCamp.setText(null);
-                parolaGenerata.setText(null);
+                containerAdaugareMembri.setStyle("-fx-opacity: 0.5");
+                CuratareCampuri.curataCampuriAdaugareMembri(rol, eroareNumeUtilizator, eroareNume, eroareEmail, eroareTelefon, parolaGenerata,
+                        eroareRol, numeUtilizatorCamp, numeCamp, emailCamp, telefonCamp, campParola, mesajEroare);
+            }catch(Exception ex) {
+                mesajEroare.setText("Nume de utilizator, telefon sau email deja folosit!");
+                telefonCamp.setStyle("-fx-border-color: #ec1a1a");
+                numeUtilizatorCamp.setStyle("-fx-border-color: #ec1a1a");
+                emailCamp.setStyle("-fx-border-color: #ec1a1a");
+                rol.setStyle(null);
+                numeCamp.setStyle(null);
+                campParola.setStyle(null);
             }
-            catch(Exception ex){
-                mesaj.setText("Nume de utilizator, telefon sau email deja folosit!");
-                mesaj.setStyle("-fx-text-fill: #ec1a1a");
+        }else{
+            eroareEmail.setText("Emailul introdus este incorect!");
+            emailCamp.setStyle("-fx-border-color: #ec1a1a");
+            telefonCamp.setStyle(null);
+            numeUtilizatorCamp.setStyle(null);
+            rol.setStyle(null);
+            numeCamp.setStyle(null);
+            campParola.setStyle(null);
+            mesajEroare.setText("");
             }
-        }else {
-            mesaj.setText("Emailul introdus este incorect!");
-            mesaj.setStyle("-fx-text-fill: #ec1a1a");
-        }
     }
-    public void afisareParolaGenerata(ActionEvent e){
+    public void afisareParolaGenerata(MouseEvent e){
         generareParola();
     }
     public void initialize(URL url, ResourceBundle resourceBundle) {
        rol.getItems().addAll(alegereRol);
-
     }
     public void start() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("adaugaMembri.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 840, 490);
-        String css = Objects.requireNonNull(this.getClass().getResource("adaugaMembri.css")).toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("styles/adaugaMembri.css")).toExternalForm();
         scene.getStylesheets().add(css);
         Stage stage = new Stage();
         scene.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -125,11 +161,11 @@ public class PaginaAdaugareMembri implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    private boolean isValidEmailDomain(String email){
+    public boolean isValidEmailDomain(String email){
         String Pattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";
         return email.matches(Pattern);
     }
-    private void generareParola(){
+    public void generareParola(){
         String caractere = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@-_";
         SecureRandom random = new SecureRandom();
         StringBuilder parolaB = new StringBuilder();

@@ -6,21 +6,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 public class PaginaConectare implements Initializable{
     @FXML
-    private Button iesireButon;
+    public Button iesireButon;
     @FXML
-    private Button conectareButon;
+    public Button conectareButon;
     @FXML
-    private Label eroareMesaj;
+    public Label eroareParola;
     @FXML
-    private TextField numeCamp;
+    public Label eroareNume;
+    public Label eroareConectare;
     @FXML
-    private PasswordField parolaCamp;
+    public TextField numeCamp;
+    @FXML
+    public PasswordField parolaCamp;
     private static String rol;
     private static String numeUtilizator;
     private static int id;
@@ -31,33 +35,41 @@ public class PaginaConectare implements Initializable{
     }
     public void conenctareButonAct(ActionEvent e){
         PreparedStatement pst;
+        PreparedStatement pst2;
         ConectareBD conectare = new ConectareBD();
         try{
             conectare.conectareBD();
             Connection con = conectare.con;
-            pst = con.prepareStatement("select id,password,role, name, username from users where username=? and password=?");
+            pst = con.prepareStatement("SELECT id,password,role, name, username FROM users WHERE username=? AND password=?");
+            pst2 = con.prepareStatement("UPDATE users SET status = 'Activ' WHERE username = ?");
             pst.setString(1, numeCamp.getText());
             pst.setString(2, parolaCamp.getText());
+            pst2.setString(1, numeCamp.getText());
             ResultSet rs = pst.executeQuery();
+            pst2.executeUpdate();
+            String nume = numeCamp.getText();
+            String parola = parolaCamp.getText();
             if(numeCamp.getText().isEmpty() || parolaCamp.getText().isEmpty()){
-                eroareMesaj.setText("Toate câmpurile sunt obligatorii!");
+                ValidareCampuri.validareConectare(nume, parola, eroareNume, eroareParola,eroareConectare, numeCamp, parolaCamp);
+            }else if(rs.next()) {
+                String rol = rs.getString("role");
+                setRol(rol);
+                int id = rs.getInt("id");
+                setId(id);
+                setNumeUtilizator(numeCamp.getText());
+                String name = rs.getString("name");
+                setNume(name);
+                eroareNume.setText(null);
+                eroareParola.setText(null);
+                Stage stage = (Stage) iesireButon.getScene().getWindow();
+                stage.close();
+                new PaginaPrincipala().start();
             }else{
-                if(rs.next()) {
-                    String rol = rs.getString("role");
-                    setRol(rol);
-                    int id = rs.getInt("id");
-                    setId(id);
-                    setNumeUtilizator(numeCamp.getText());
-                    String name = rs.getString("name");
-                    setNume(name);
-                    eroareMesaj.setText(null);
-                    Stage stage = (Stage) iesireButon.getScene().getWindow();
-                    stage.close();
-                    new PaginaPrincipala().start();
-                }else{
-                    eroareMesaj.setText("Numele sau parola este incorectă!");
-
-                }
+                eroareConectare.setText("Numele sau parola este incorectă!");
+                numeCamp.setStyle("-fx-border-color: #ec1a1a");
+                parolaCamp.setStyle("-fx-border-color: #ec1a1a");
+                eroareNume.setText(null);
+                eroareParola.setText(null);
             }
         }catch(Exception ex){
             numeCamp.setText("");
@@ -66,7 +78,8 @@ public class PaginaConectare implements Initializable{
         }
     }
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
     public String getRol() {
         return rol;
     }

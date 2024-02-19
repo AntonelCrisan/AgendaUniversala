@@ -10,12 +10,18 @@
     -fx-cursor: hand;
 }
 #iesireButon:hover{
-     -fx-scale-y: 1.2;
-     -fx-scale-x: 1.2;
+    -fx-background-color: #ec1a1a;
+     -fx-text-fill: #ffffff;
+     -fx-cursor: hand;
+
+}
+#iesireButon{
+     -fx-background-color: #f5f5f5;
+      -fx-text-fill: #2a62bc;
 }
 #numeCamp, #parolaCamp{
     -fx-background-color: #f0f0f0;
-    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-width: 0px 0px 0px 6px;
     -fx-border-color: #2a62bc;
 }
 #parolaUitata:hover{

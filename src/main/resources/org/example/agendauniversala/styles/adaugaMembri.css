@@ -1,0 +1,43 @@
+#paginaAdaugaMembru{
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #dedcdc;
+    -fx-border-width: 1px;
+}
+#numeCamp, #numeUtilizatorCamp, #emailCamp, #telefonCamp, #rol{
+    -fx-background-color: #f0f0f0;
+    -fx-border-width: 0px 0px 0px 6px;
+    -fx-border-color: #2a62bc;
+}
+ #adaugaButon:hover, #inchideMesaj:hover{
+    -fx-scale-y: 1.1;
+    -fx-scale-x: 1.1;
+    -fx-cursor: hand;
+}
+#inchideAdaugareMembri:hover{
+    -fx-background-color: #ec1a1a;
+     -fx-text-fill: #ffffff;
+     -fx-cursor: hand;
+
+}
+#inchideAdaugareMembri{
+     -fx-background-color: #f5f5f5;
+      -fx-text-fill: #2a62bc;
+}
+#genereazaParola:hover{
+    -fx-cursor: hand;
+    -fx-underline: true;
+}
+#campParola{
+  -fx-background-color: #f0f0f0;
+    -fx-border-width: 0px 0px 0px 6px;
+    -fx-border-color: #2a62bc;
+}
+#rol:hover{
+-fx-cursor: hand;
+}
+#parolaButon, #adaugaButon, #inchideMesaj{
+    -fx-background-color: #2a62bc;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}

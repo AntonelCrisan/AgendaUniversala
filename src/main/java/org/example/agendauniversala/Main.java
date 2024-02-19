@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("conectare.fxml"));
 ;       Scene scene = new Scene(fxmlLoader.load(), 790, 500);
-        String css = Objects.requireNonNull(this.getClass().getResource("conectare.css")).toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("styles/conectare.css")).toExternalForm();
         scene.getStylesheets().add(css);
         scene.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -39,7 +39,7 @@ public class Main extends Application {
     public void startDupaDeconectare() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("conectare.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 790, 500);
-        String css = Objects.requireNonNull(this.getClass().getResource("conectare.css")).toExternalForm();
+        String css = Objects.requireNonNull(this.getClass().getResource("styles/conectare.css")).toExternalForm();
         scene.getStylesheets().add(css);
         Stage stage = new Stage();
         scene.setOnMousePressed(new EventHandler<MouseEvent>() {

@@ -1,0 +1,44 @@
+#numeCamp, #numeUtilizatorCamp, #emailCamp, #telefonCamp, #rol, #campCautaNumeUtilizator{
+    -fx-background-color: #f0f0f0;
+    -fx-border-width: 0px 0px 0px 6px;
+    -fx-border-color: #2a62bc;
+}
+ #salveazaButon:hover, #curataButon:hover, #genereazaParola:hover, #editareButon:hover, #stergeMembruButon:hover, #cautaUtilizator:hover,
+ #reimprospatareTabel:hover, #anulare:hover, #stergereMembru:hover, #inchideMesajSucces:hover{
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.1;
+}
+#inchideAfisareMembri:hover, #inchideEditareMembru:hover{
+    -fx-background-color: #ec1a1a;
+     -fx-text-fill: #ffffff;
+     -fx-cursor: hand;
+}
+#inchideAfisareMembri, #inchideEditareMembru{
+     -fx-background-color: #f5f5f5;
+      -fx-text-fill: #2a62bc;
+}
+ #genereazaParola, #cautaUtilizator, #editareButon, #reimprospatareTabel, #anulare, #inchideMesajSucces{
+    -fx-background-color: #2a62bc;
+    -fx-text-fill: #ffffff;
+    -fx-border-radiu: 20px;
+    -fx-background-radius: 20px;
+}
+#salveazaButon{
+    -fx-background-color: #02bd34;
+    -fx-text-fill: #ffffff;
+    -fx-border-radiu: 20px;
+    -fx-background-radius: 20px;
+}
+#curataButon{
+    -fx-background-color: #d1d130;
+    -fx-text-fill: #ffffff;
+    -fx-border-radiu: 20px;
+    -fx-background-radius: 20px;
+}
+#stergeMembruButon, #stergereMembru{
+    -fx-background-color: #ec1a1a;
+    -fx-text-fill: #ffffff;
+    -fx-border-radiu: 20px;
+    -fx-background-radius: 20px;
+}
