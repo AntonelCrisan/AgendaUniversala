@@ -43,7 +43,7 @@
                </font>
             </Button>
             <TextField fx:id="telefonCamp" layoutX="493.0" layoutY="144.0" prefHeight="35.0" prefWidth="260.0" promptText="Telefon" />
-            <Button fx:id="inchideAdaugareMembri" layoutX="809.0" layoutY="1.0" mnemonicParsing="false" onAction="#inchidePagina" prefHeight="22.0" prefWidth="22.0" text="X" textFill="#2a62bc">
+            <Button fx:id="inchideAdaugareMembri" layoutX="811.0" mnemonicParsing="false" onAction="#inchidePagina" prefHeight="22.0" prefWidth="22.0" text="X" textFill="#2a62bc">
                <font>
                   <Font size="15.0" />
                </font>

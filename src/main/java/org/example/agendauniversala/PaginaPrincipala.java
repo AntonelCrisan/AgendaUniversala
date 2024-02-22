@@ -74,6 +74,12 @@ public class PaginaPrincipala implements Initializable {
     public ImageView adaugaIcon;
     @FXML
     public ImageView deconectareIcon;
+    @FXML
+    private ImageView contIcon;
+    @FXML
+    private Label contText;
+    @FXML
+    private Pane cont;
     private double xOffset = 0;
     private double yOffset = 0;
     public void afisareSarcini(MouseEvent event){
@@ -121,24 +127,57 @@ public class PaginaPrincipala implements Initializable {
         new PaginaAfisareMembri().start();
         inchideMeniu(e);
     }
+    public void afisareSetari(MouseEvent e) throws  IOException{
+        new PaginaSetari().start();
+        inchideMeniu(e);
+    }
     public void inchidePagina(ActionEvent e){
         Stage stage = (Stage) paginaPrincipala.getScene().getWindow();
         stage.close();
+        PreparedStatement pst;
+        Connection con = null;
+        ConectareBD conectare = new ConectareBD();
+        try{
+            conectare.conectareBD();
+            con = conectare.con;
+            pst = con.prepareStatement("UPDATE users SET status = 'Inactiv' WHERE username = ?");
+            pst.setString(1, new PaginaConectare().getNumeUtilizator());
+            pst.executeUpdate();
+        }catch (SQLException exception){
+            System.out.println(exception);
+        }finally {
+            try{
+                if(con != null){
+                    con.close();
+                }
+            }catch (SQLException ex){
+                System.err.println("Eroare la închiderea conexiunii: " + ex.getMessage());
+            }
+        }
     }
     public void deconectare(MouseEvent e) throws IOException{
         Stage stagePaginaPrincipala = (Stage) deconectare.getScene().getWindow();
         stagePaginaPrincipala.close();
         new Main().startDupaDeconectare();
         PreparedStatement pst;
+        Connection con = null;
         ConectareBD conectare = new ConectareBD();
         try{
             conectare.conectareBD();
-            Connection con = conectare.con;
+            con = conectare.con;
             pst = con.prepareStatement("UPDATE users SET status = 'Inactiv' WHERE username = ?");
             pst.setString(1, new PaginaConectare().getNumeUtilizator());
             pst.executeUpdate();
         }catch (SQLException exception){
             System.out.println(exception);
+        }finally {
+            try{
+                if(con != null){
+                    con.close();
+                }
+            }catch (SQLException ex){
+                System.err.println("Eroare la închiderea conexiunii: " + ex.getMessage());
+            }
         }
     }
     private final String obtineRol = new PaginaConectare().getRol();
@@ -151,6 +190,16 @@ public class PaginaPrincipala implements Initializable {
         }
     }
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        cont.setOnMouseEntered(e -> {
+            cont.setStyle("-fx-background-color: #2a62bc;");
+            contText.setStyle("-fx-text-fill: #ffffff;");
+            contIcon.setVisible(true);
+        });
+        cont.setOnMouseExited(e -> {
+            cont.setStyle("-fx-background-color: #ffffff");
+            contText.setStyle("-fx-text-fill: #2a62bc;");
+            contIcon.setVisible(false);
+        });
         setari.setOnMouseEntered(e -> {
             setari.setStyle("-fx-background-color: #2a62bc;");
             setariText.setStyle("-fx-text-fill: #ffffff;");
@@ -182,7 +231,6 @@ public class PaginaPrincipala implements Initializable {
             afisareMembri.setStyle("-fx-background-color: #ffffff");
             afisareText.setStyle("-fx-text-fill: #2a62bc;");
             membriIcon.setVisible(false);
-
         });
         deconectare.setOnMouseEntered(e -> {
             deconectare.setStyle("-fx-background-color: #2a62bc;");

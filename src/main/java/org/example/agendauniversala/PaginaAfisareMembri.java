@@ -22,6 +22,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -77,8 +78,6 @@ public class PaginaAfisareMembri implements Initializable {
     @FXML
     public Label eroareTelefon;
     @FXML
-    public Label parolaGenerata;
-    @FXML
     public Pane mesajSucces;
     @FXML
     public Pane containerAfisareMembri;
@@ -97,6 +96,7 @@ public class PaginaAfisareMembri implements Initializable {
     public  void inchideEditareMembru(ActionEvent e){
         editarePane.setVisible(false);
         inchideCautare.setVisible(false);
+        campCautaNumeUtilizator.setText("");
         listaM = AfisareMembri.membri();
         membriTabel.setItems(listaM);
         containerAfisareMembri.setStyle("-fx-opacity: 1");
@@ -136,13 +136,14 @@ public class PaginaAfisareMembri implements Initializable {
         ConectareBD conectare = new ConectareBD();
         ObservableList<Membri> membru = FXCollections.observableArrayList();
         PreparedStatement pst;
+        Connection con = null;
         if(campCautaNumeUtilizator.getText().isEmpty()){
             eroare.setText("Introduceți numele de utilizator!");
             campCautaNumeUtilizator.setStyle("-fx-border-color: #ec1a1a");
         }else{
             try {
                 conectare.conectareBD();
-                Connection con = conectare.con;
+                con = conectare.con;
                 pst = con.prepareStatement("select name, username, email, phone, role, status from users where username = ?");
                 pst.setString(1, campCautaNumeUtilizator.getText());
                 ResultSet rs = pst.executeQuery();
@@ -170,6 +171,15 @@ public class PaginaAfisareMembri implements Initializable {
                 }catch (Exception ex) {
                     ex.printStackTrace();
             }
+            finally {
+                try{
+                    if(con != null){
+                        con.close();
+                    }
+                }catch (SQLException ex){
+                    System.err.println("Eroare la închiderea conexiunii: " + ex.getMessage());
+                }
+            }
         listaM = membru;
         membriTabel.setItems(listaM);
         }
@@ -183,11 +193,12 @@ public class PaginaAfisareMembri implements Initializable {
             atentionareStergere.setVisible(true);
             containerAfisareMembri.setStyle("-fx-opacity: 0.5");
             stergereMembru.setOnMouseClicked(event -> {
-                ConectareBD conectare = new ConectareBD();
                 PreparedStatement pst;
+                Connection con = null;
+                ConectareBD conectare = new ConectareBD();
                 try {
                     conectare.conectareBD();
-                    Connection con = conectare.con;
+                    con = conectare.con;
                     pst = con.prepareStatement("delete from users where username = ?");
                     pst.setString(1, campCautaNumeUtilizator.getText());
                     pst.executeUpdate();
@@ -203,6 +214,14 @@ public class PaginaAfisareMembri implements Initializable {
                     mesajInformare.setText("Membru șters cu succes!");
                 }catch (Exception ex) {
                     ex.printStackTrace();
+                }finally {
+                    try{
+                        if(con != null){
+                            con.close();
+                        }
+                    }catch (SQLException ex){
+                        System.err.println("Eroare la închiderea conexiunii: " + ex.getMessage());
+                    }
                 }
             });
         }
@@ -270,10 +289,11 @@ public class PaginaAfisareMembri implements Initializable {
             telefonCamp.setStyle(null);
             eroareTelefon.setText("");
             PreparedStatement ps;
+            Connection con = null;
             ConectareBD conectare = new ConectareBD();
             try {
                 conectare.conectareBD();
-                Connection con = conectare.con;
+                con = conectare.con;
                 ps = con.prepareStatement("update users set name = ?, username = ?, email = ?, phone = ?, role = ? where username = ?");
                 ps.setString(1, numeCamp.getText());
                 ps.setString(2, numeUtilizatorCamp.getText());
@@ -297,6 +317,14 @@ public class PaginaAfisareMembri implements Initializable {
                 emailCamp.setStyle("-fx-border-color: #ec1a1a");
                 rol.setStyle(null);
                 numeCamp.setStyle(null);
+            }finally {
+                try {
+                    if (con != null) {
+                        con.close();
+                    }
+                } catch (SQLException ex) {
+                    System.err.println("Eroare la închiderea conexiunii: " + ex.getMessage());
+                }
             }
         }else{
             eroareEmail.setText("Emailul introdus este incorect!");

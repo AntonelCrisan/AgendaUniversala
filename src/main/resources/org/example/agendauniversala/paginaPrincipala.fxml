@@ -88,7 +88,7 @@
                   <Image url="@icons/arrow-left-solid.png" />
                </image>
             </ImageView>
-            <Pane fx:id="afisareMembri" layoutX="2.0" layoutY="330.0" onMouseClicked="#afisareMembriAct" prefHeight="66.0" prefWidth="332.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;">
+            <Pane fx:id="afisareMembri" layoutX="2.0" layoutY="330.0" onMouseClicked="#afisareMembriAct" prefHeight="66.0" prefWidth="332.0">
                <children>
                   <Label fx:id="afisareText" layoutX="73.0" layoutY="18.0" text="Afișare membri" textFill="#2a62bc">
                      <font>
@@ -145,7 +145,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="setari" layoutX="2.0" layoutY="196.0" onMouseClicked="#adaugaMembriAct" prefHeight="66.0" prefWidth="332.0">
+            <Pane fx:id="setari" layoutX="2.0" layoutY="196.0" onMouseClicked="#afisareSetari" prefHeight="66.0" prefWidth="332.0">
                <children>
                   <Label fx:id="setariText" layoutX="71.0" layoutY="18.0" text="Setări" textFill="#2a62bc">
                      <font>
@@ -166,7 +166,7 @@
             </Pane>
             <Pane fx:id="cont" layoutX="2.0" layoutY="129.0" onMouseClicked="#adaugaMembriAct" prefHeight="66.0" prefWidth="332.0">
                <children>
-                  <Label fx:id="setariText1" layoutX="71.0" layoutY="18.0" text="Contul meu" textFill="#2a62bc">
+                  <Label fx:id="contText" layoutX="71.0" layoutY="18.0" text="Contul meu" textFill="#2a62bc">
                      <font>
                         <Font name="Inter Regular" size="25.0" />
                      </font>
@@ -176,9 +176,9 @@
                         <Image url="@icons/user-solid.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="setariIcon1" fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <ImageView fx:id="contIcon" fitHeight="30.0" fitWidth="30.0" layoutX="23.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
-                        <Image url="@icons/setting-white.png" />
+                        <Image url="@icons/user-solid%20(1).png" />
                      </image>
                   </ImageView>
                </children>

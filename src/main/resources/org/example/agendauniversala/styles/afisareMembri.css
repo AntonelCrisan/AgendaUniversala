@@ -1,10 +1,15 @@
-#numeCamp, #numeUtilizatorCamp, #emailCamp, #telefonCamp, #rol, #campCautaNumeUtilizator{
-    -fx-background-color: #f0f0f0;
+#numeCamp, #numeUtilizatorCamp, #emailCamp, #telefonCamp, #rol{
+    -fx-background-color: #f9f9f9;
     -fx-border-width: 0px 0px 0px 6px;
     -fx-border-color: #2a62bc;
 }
- #salveazaButon:hover, #curataButon:hover, #genereazaParola:hover, #editareButon:hover, #stergeMembruButon:hover, #cautaUtilizator:hover,
- #reimprospatareTabel:hover, #anulare:hover, #stergereMembru:hover, #inchideMesajSucces:hover{
+#campCautaNumeUtilizator{
+     -fx-background-color: #f0f0f0;
+     -fx-border-width: 0px 0px 0px 6px;
+     -fx-border-color: #2a62bc;
+}
+ #salveazaButon:hover, #curataButon:hover, #editareButon:hover, #stergeMembruButon:hover, #cautaUtilizator:hover,
+ #anulare:hover, #stergereMembru:hover, #inchideMesajSucces:hover{
     -fx-scale-y: 1.1;
     -fx-cursor: hand;
     -fx-scale-x: 1.1;
@@ -15,30 +20,56 @@
      -fx-cursor: hand;
 }
 #inchideAfisareMembri, #inchideEditareMembru{
-     -fx-background-color: #f5f5f5;
+     -fx-background-color: transparent;
       -fx-text-fill: #2a62bc;
 }
- #genereazaParola, #cautaUtilizator, #editareButon, #reimprospatareTabel, #anulare, #inchideMesajSucces{
+#anulare, #inchideMesajSucces{
     -fx-background-color: #2a62bc;
     -fx-text-fill: #ffffff;
-    -fx-border-radiu: 20px;
+    -fx-border-radius: 20px;
     -fx-background-radius: 20px;
+}
+#cautaUtilizator, #editareButon, #reimprospatareTabel{
+     -fx-background-color: transparent;
+    -fx-text-fill: #2a62bc;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-border-color:  #2a62bc;
+}
+#cautaUtilizator:hover, #editareButon:hover, #reimprospatareTabel:hover{
+     -fx-background-color: #2a62bc;
+    -fx-text-fill: #ffffff;
+    -fx-cursor:hand;
+}
+#stergeMembruButon{
+    -fx-background-color: transparent;
+    -fx-text-fill: #ec1a1a;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-border-color:  #ec1a1a;
+}
+#stergeMembruButon:hover{
+    -fx-background-color: #ec1a1a;
+    -fx-text-fill: #ffffff;
+    -fx-cursor:hand;
 }
 #salveazaButon{
     -fx-background-color: #02bd34;
     -fx-text-fill: #ffffff;
-    -fx-border-radiu: 20px;
+    -fx-border-radius: 20px;
     -fx-background-radius: 20px;
 }
 #curataButon{
     -fx-background-color: #d1d130;
     -fx-text-fill: #ffffff;
-    -fx-border-radiu: 20px;
+    -fx-border-radius: 20px;
     -fx-background-radius: 20px;
 }
-#stergeMembruButon, #stergereMembru{
+#stergereMembru{
     -fx-background-color: #ec1a1a;
     -fx-text-fill: #ffffff;
-    -fx-border-radiu: 20px;
+    -fx-border-radius: 20px;
     -fx-background-radius: 20px;
 }

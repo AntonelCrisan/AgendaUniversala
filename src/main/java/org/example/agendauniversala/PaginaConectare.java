@@ -29,6 +29,8 @@ public class PaginaConectare implements Initializable{
     private static String numeUtilizator;
     private static int id;
     private static String nume;
+    private static String email;
+    private static String telefon;
     public void iesireButonAct(ActionEvent e){
         Stage stage = (Stage) iesireButon.getScene().getWindow();
         stage.close();
@@ -37,10 +39,11 @@ public class PaginaConectare implements Initializable{
         PreparedStatement pst;
         PreparedStatement pst2;
         ConectareBD conectare = new ConectareBD();
+        Connection con = null;
         try{
             conectare.conectareBD();
-            Connection con = conectare.con;
-            pst = con.prepareStatement("SELECT id,password,role, name, username FROM users WHERE username=? AND password=?");
+            con = conectare.con;
+            pst = con.prepareStatement("SELECT id,password,role, name, username, phone, email FROM users WHERE username=? AND password=?");
             pst2 = con.prepareStatement("UPDATE users SET status = 'Activ' WHERE username = ?");
             pst.setString(1, numeCamp.getText());
             pst.setString(2, parolaCamp.getText());
@@ -59,6 +62,10 @@ public class PaginaConectare implements Initializable{
                 setNumeUtilizator(numeCamp.getText());
                 String name = rs.getString("name");
                 setNume(name);
+                String email = rs.getString("email");
+                setEmail(email);
+                String telefon = rs.getString("phone");
+                setTelefon(telefon);
                 eroareNume.setText(null);
                 eroareParola.setText(null);
                 Stage stage = (Stage) iesireButon.getScene().getWindow();
@@ -75,6 +82,14 @@ public class PaginaConectare implements Initializable{
             numeCamp.setText("");
             parolaCamp.setText("");
             ex.printStackTrace();
+        }finally {
+            try{
+                if(con != null){
+                    con.close();
+                }
+            }catch (SQLException exception){
+                System.err.println("Eroare la închiderea conexiunii: " + exception.getMessage());
+            }
         }
     }
     @Override
@@ -103,5 +118,21 @@ public class PaginaConectare implements Initializable{
     }
     public void setNume(String nume) {
         PaginaConectare.nume = nume;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        PaginaConectare.email = email;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        PaginaConectare.telefon = telefon;
     }
 }

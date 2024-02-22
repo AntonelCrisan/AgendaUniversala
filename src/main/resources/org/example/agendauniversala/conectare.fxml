@@ -51,7 +51,7 @@
                   <Font name="Inter Regular" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="iesireButon" layoutX="328.0" layoutY="1.0" mnemonicParsing="false" onAction="#iesireButonAct" prefHeight="22.0" prefWidth="22.0" text="X" textFill="#2b64ba">
+            <Button fx:id="iesireButon" layoutX="330.0" layoutY="1.0" mnemonicParsing="false" onAction="#iesireButonAct" prefHeight="22.0" prefWidth="22.0" text="X" textFill="#2b64ba">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

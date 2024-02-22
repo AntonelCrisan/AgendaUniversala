@@ -47,4 +47,30 @@ public class CuratareCampuri {
         numeUtilizatorCamp.setStyle(null);
         eroareEditare.setText("");
     }
+    public static void curataCampuriModificareEmail(Label eroareEmail, Label eroareConfEmail, Label eroare, TextField emailCamp,
+                                                    TextField confEmailCamp){
+        eroare.setText("");
+        eroareEmail.setText("");
+        eroareConfEmail.setText("");
+        emailCamp.setStyle(null);
+        confEmailCamp.setStyle(null);
+        emailCamp.setText("");
+        confEmailCamp.setText("");
+    }
+    public static void curataCampuriModificareParola(Label eroareParola, Label eroareConfParola, Label eroare, TextField parolaCamp,
+                                                    TextField confParolaCamp){
+        eroare.setText("");
+        eroareParola.setText("");
+        eroareConfParola.setText("");
+        parolaCamp.setStyle(null);
+        confParolaCamp.setStyle(null);
+        parolaCamp.setText("");
+        confParolaCamp.setText("");
+    }
+    public static void curataCampTelefon(Label eroareTelefon, Label eroare, TextField telefonCamp){
+        eroareTelefon.setText("");
+        eroare.setText("");
+        telefonCamp.setText("");
+        telefonCamp.setStyle(null);
+    }
 }

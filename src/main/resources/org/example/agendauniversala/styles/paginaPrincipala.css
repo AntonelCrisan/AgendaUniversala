@@ -17,7 +17,7 @@
      -fx-background-color: #f5f5f5;
       -fx-text-fill: #2a62bc;
 }
-#setari:hover, #afisareMembri:hover, #adaugareMembri:hover, #deconectare:hover{
+#cont:hover, #setari:hover, #afisareMembri:hover, #adaugareMembri:hover, #deconectare:hover{
     -fx-cursor: hand;
 }
 #sarcini:hover, #calendar:hover, #filtreaza:hover, #sorteaza:hover, #cauta:hover, #adaugaSarcina:hover{

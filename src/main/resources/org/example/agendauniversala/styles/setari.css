@@ -1,0 +1,45 @@
+#iesireButon:hover{
+    -fx-background-color: #ec1a1a;
+     -fx-text-fill: #ffffff;
+     -fx-cursor: hand;
+}
+#iesireButon{
+     -fx-background-color: #f5f5f5;
+      -fx-text-fill: #2a62bc;
+}
+#modificaEmail, #modificaParola, #modificaTelefon{
+    -fx-background-color: transparent;
+    -fx-text-fill: #2a62bc;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-border-color: #2a62bc;
+}
+#modificaEmail:hover, #modificaParola:hover, #modificaTelefon:hover{
+    -fx-background-color: #2a62bc;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+#emailCamp, #confEmailCamp, #parolaCamp, #confParolaCamp, #telefonCamp{
+    -fx-background-color: #f9f9f9;
+    -fx-border-width: 0px 0px 0px 6px;
+    -fx-border-color: #2a62bc;
+}
+#salvareEmailButon, #salvareParolaButon, #salvareTelefonButon{
+    -fx-background-color: #02bd34;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+#salvareEmailButon:hover, #anulareEmailButon:hover, #salvareParolaButon:hover, #anulareParolaButon:hover, #salvareTelefonButon:hover, #anulareTelefonButon:hover,
+#confirmareSuccesButon:hover{
+    -fx-cursor: hand;
+    -fx-scale-y: 1.1;
+    -fx-scale-x: 1.1;
+}
+#anulareEmailButon, #anulareParolaButon, #anulareTelefonButon, #confirmareSuccesButon{
+    -fx-background-color: #2a62bc;
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+}

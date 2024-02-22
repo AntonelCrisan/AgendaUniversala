@@ -19,6 +19,7 @@ import java.net.URL;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 public class PaginaAdaugareMembri implements Initializable {
@@ -95,10 +96,11 @@ public class PaginaAdaugareMembri implements Initializable {
             telefonCamp.setStyle(null);
             eroareTelefon.setText("");
             PreparedStatement ps;
+            Connection con = null;
             ConectareBD conectare = new ConectareBD();
             try {
                 conectare.conectareBD();
-                Connection con = conectare.con;
+                con = conectare.con;
                 ps = con.prepareStatement("insert into users(name,username, email, phone, password, role) values(?, ?, ?, ?, ?, ?)");
                 ps.setString(1, numeCamp.getText());
                 ps.setString(2, numeUtilizatorCamp.getText());
@@ -119,6 +121,14 @@ public class PaginaAdaugareMembri implements Initializable {
                 rol.setStyle(null);
                 numeCamp.setStyle(null);
                 campParola.setStyle(null);
+            }finally {
+                try {
+                    if (con != null) {
+                        con.close();
+                    }
+                } catch (SQLException ex) {
+                    System.err.println("Eroare la închiderea conexiunii: " + ex.getMessage());
+                }
             }
         }else{
             eroareEmail.setText("Emailul introdus este incorect!");
