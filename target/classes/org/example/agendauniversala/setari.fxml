@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="paginaSetari" prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #dedcdc;" stylesheets="@styles/setari.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.agendauniversala.PaginaSetari">
+   <children>
+      <Pane fx:id="setariPane" layoutX="-2.0" prefHeight="404.0" prefWidth="903.0">
+         <children>
+            <Label layoutX="418.0" layoutY="31.0" text="SETĂRI" textFill="#2a62bc">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Button fx:id="iesireButon" layoutX="871.0" layoutY="1.0" mnemonicParsing="false" onAction="#iesireSetari" text="X" textFill="#2a62bc">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Group layoutX="67.0" layoutY="164.0">
+               <children>
+                  <Label layoutX="44.0" text="Adresa de e-mail">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="44.0" layoutY="25.0" text="Adresa de email actuală a contului tău este " textFill="#727273" />
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/at-solid.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="modificaEmail" layoutX="705.0" layoutY="13.0" mnemonicParsing="false" onAction="#deschideModificareEmail" text="Modifică" />
+                  <Label fx:id="emailCont" layoutX="274.0" layoutY="25.0" textFill="#727273">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </Group>
+            <Group layoutX="68.0" layoutY="260.0">
+               <children>
+                  <Label layoutX="44.0" text="Parola">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="44.0" layoutY="25.0" text="Este o idee bună să folosești o parolă puternică pe care nu o mai folosești și în altă parte" textFill="#727273">
+                     <font>
+                        <Font name="Inter Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/lock-solid.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="modificaParola" layoutX="705.0" layoutY="13.0" mnemonicParsing="false" onAction="#deschideModificareParola" text="Modifică" />
+               </children>
+            </Group>
+            <Group layoutX="68.0" layoutY="357.0">
+               <children>
+                  <Label layoutX="44.0" text="Număr de telefon">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="44.0" layoutY="25.0" text="Numărul tău de telefon este" textFill="#727273">
+                     <font>
+                        <Font name="Inter Regular" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/phone-solid.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="modificaTelefon" layoutX="705.0" layoutY="13.0" mnemonicParsing="false" onAction="#deschideModificareTelefon" text="Modifică" />
+                  <Label fx:id="telefonCont" layoutX="196.0" layoutY="25.0" textFill="#727273">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </Group>
+         </children>
+      </Pane>
+      <Pane fx:id="modificareEmail" layoutX="242.0" layoutY="90.0" prefHeight="391.0" prefWidth="415.0" style="-fx-background-color: #ffffff; -fx-border-color: #dedcdc;" visible="false">
+         <children>
+            <TextField fx:id="emailCamp" layoutX="101.0" layoutY="119.0" prefHeight="35.0" prefWidth="248.0" promptText="E-mail nou" />
+            <TextField fx:id="confEmailCamp" layoutX="101.0" layoutY="208.0" prefHeight="35.0" prefWidth="248.0" promptText="Confirmare e-mail" />
+            <Button fx:id="salvareEmailButon" layoutX="70.0" layoutY="326.0" mnemonicParsing="false" onAction="#modificareEmail" prefHeight="35.0" prefWidth="100.0" text="Salvează" />
+            <Button fx:id="anulareEmailButon" layoutX="246.0" layoutY="326.0" mnemonicParsing="false" onAction="#inchideModificareEmail" prefHeight="35.0" prefWidth="100.0" text="Anulează" />
+            <Label layoutX="45.0" layoutY="27.0" text="SCHIMBARE ADRESA DE E-MAIL" textFill="#2a62bc">
+               <font>
+                  <Font name="Inter Regular" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="67.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/at-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="52.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/envelope-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="77.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/arrows-rotate-solid.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="eroareEmail" layoutX="101.0" layoutY="163.0" textFill="#ec1a1a" />
+            <Label fx:id="eroareConfEmail" layoutX="101.0" layoutY="251.0" textFill="#ec1a1a" />
+            <Label fx:id="mesajEroareEmail" alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="280.0" prefHeight="25.0" textFill="#ec1a1a">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="modificareParola" layoutX="242.0" layoutY="90.0" prefHeight="391.0" prefWidth="415.0" style="-fx-background-color: #ffffff; -fx-border-color: #dedcdc;" visible="false">
+         <children>
+            <Button fx:id="salvareParolaButon" layoutX="72.0" layoutY="329.0" mnemonicParsing="false" onAction="#modificareParola" prefHeight="35.0" prefWidth="100.0" text="Salvează" />
+            <Button fx:id="anulareParolaButon" layoutX="248.0" layoutY="329.0" mnemonicParsing="false" onAction="#inchideModificareParola" prefHeight="35.0" prefWidth="100.0" text="Anulează" />
+            <Label layoutX="97.0" layoutY="28.0" text="SCHIMBARE PAROLA" textFill="#2a62bc">
+               <font>
+                  <Font name="Inter Regular" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="58.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/lock-solid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="57.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/lock-solid.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="parolaCamp" layoutX="110.0" layoutY="123.0" prefHeight="35.0" prefWidth="248.0" promptText="Parola noua" />
+            <PasswordField fx:id="confParolaCamp" layoutX="110.0" layoutY="207.0" prefHeight="35.0" prefWidth="248.0" promptText="Confirma parola" />
+            <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="78.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/arrows-rotate-solid.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="eroareParola" layoutX="110.0" layoutY="167.0" prefHeight="17.0" prefWidth="248.0" textFill="#ec1a1a" wrapText="true" />
+            <Label fx:id="eroareConfParola" layoutX="110.0" layoutY="255.0" textFill="#ec1a1a" />
+            <Label fx:id="mesajEroareParola" layoutX="110.0" layoutY="291.0" prefHeight="25.0" prefWidth="248.0" textFill="#ec1a1a">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+         </children>
+      </Pane>
+      <Pane fx:id="modificareTelefon" layoutX="242.0" layoutY="90.0" prefHeight="336.0" prefWidth="415.0" style="-fx-background-color: #ffffff; -fx-border-color: #dedcdc;" visible="false">
+         <children>
+            <TextField fx:id="telefonCamp" layoutX="110.0" layoutY="139.0" prefHeight="35.0" prefWidth="248.0" promptText="Numar nou" />
+            <Button fx:id="salvareTelefonButon" layoutX="70.0" layoutY="247.0" mnemonicParsing="false" onAction="#modificareTelefon" prefHeight="35.0" prefWidth="100.0" text="Salvează" />
+            <Button fx:id="anulareTelefonButon" layoutX="246.0" layoutY="247.0" mnemonicParsing="false" onAction="#inchideModificareTelefon" prefHeight="35.0" prefWidth="100.0" text="Anulează" />
+            <Label layoutX="29.0" layoutY="27.0" text="SCHIMBA NUMARUL DE TELEFON" textFill="#2a62bc">
+               <font>
+                  <Font name="Inter Regular" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="57.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/phone-solid.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="eroareTelefon" layoutX="110.0" layoutY="185.0" textFill="#ec1a1a" />
+            <Label fx:id="mesajEroareTelefon" layoutX="82.0" layoutY="213.0" prefHeight="25.0" prefWidth="287.0" textFill="#ec1a1a">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="mesajSucces" layoutX="275.0" layoutY="148.0" prefHeight="250.0" prefWidth="350.0" style="-fx-background-color: #ffffff; -fx-border-color: #dedcdc;" visible="false">
+         <children>
+            <Button fx:id="confirmareSuccesButon" layoutX="125.0" layoutY="191.0" mnemonicParsing="false" onAction="#inchideMesajSucces" prefHeight="35.0" prefWidth="100.0" text="OK" />
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="125.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/succes.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="mesaj" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="145.0" prefHeight="25.0" prefWidth="319.0" textAlignment="JUSTIFY" textFill="#1ffc1f">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
