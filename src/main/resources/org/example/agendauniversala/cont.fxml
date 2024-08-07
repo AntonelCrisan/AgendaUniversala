@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="paginaCont" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.agendauniversala.PaginaCont">
+   <children>
+      <Pane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #dedcdc;">
+         <children>
+            <Button fx:id="inchidePaginaButon" layoutX="669.0" layoutY="1.0" mnemonicParsing="false" onAction="#inchidePagina" text="X">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="68.0" layoutY="56.0" text="Datele contului" textFill="#2a62bc">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="literaCont" alignment="CENTER" layoutX="87.0" layoutY="140.0" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: #2a62bc; -fx-text-fill: #ffffff; -fx-background-radius: 50%; -fx-padding: 10px;" text="A">
+               <font>
+                  <Font size="50.0" />
+               </font></Label>
+            <Label layoutX="313.0" layoutY="140.0" text="Nume utilizator:" textFill="#666666">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="numeUtilizatorCont" layoutX="453.0" layoutY="140.0" text="Label">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label layoutX="313.0" layoutY="182.0" text="Nume:" textFill="#666666">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="numeCont" layoutX="453.0" layoutY="182.0" text="Label">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label layoutX="313.0" layoutY="223.0" text="Email:" textFill="#666666">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="emailCont" layoutX="453.0" layoutY="223.0" text="Label">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Label layoutX="313.0" layoutY="261.0" text="Telefon:" textFill="#666666">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="telefonCont" layoutX="453.0" layoutY="261.0" text="Label">
+               <font>
+                  <Font size="17.0" />
+               </font></Label>
+            <Button fx:id="schimbaDatele" layoutX="147.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="391.0" text="Administreaza datele" />
+            <ImageView fx:id="pozaProfil" fitHeight="130.0" fitWidth="130.0" layoutX="87.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+            <Pane fx:id="schimbaPoza" layoutX="168.0" layoutY="245.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #ffffff; -fx-background-radius: 50%;">
+               <children>
+                  <ImageView layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/pen-solid.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children></Pane>
+   </children>
+</AnchorPane>

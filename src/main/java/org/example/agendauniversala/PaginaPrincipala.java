@@ -7,11 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -19,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -80,6 +83,9 @@ public class PaginaPrincipala implements Initializable {
     private Label contText;
     @FXML
     private Pane cont;
+    @FXML
+    private Label imagineCont;
+    @FXML private ImageView pozaProfil;
     private double xOffset = 0;
     private double yOffset = 0;
     public void afisareSarcini(MouseEvent event){
@@ -93,8 +99,40 @@ public class PaginaPrincipala implements Initializable {
         sarcini.setStyle("-fx-underline: false");
     }
     public void deschideMeniu(MouseEvent event){
+        String imagine = new PaginaConectare().getNume();
+        String primaLitera = String.valueOf(imagine.charAt(0));
         nume.setText(new PaginaConectare().getNume());
         rol.setText(new PaginaConectare().getRol());
+        PreparedStatement pst;
+        Connection con = null;
+        ConectareBD conectare = new ConectareBD();
+        try {
+            conectare.conectareBD();
+            con = conectare.con;
+            pst = con.prepareStatement("SELECT ProfilePicture FROM users WHERE username = ?");
+            pst.setString(1, new PaginaConectare().getNumeUtilizator());
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                String path = rs.getString("ProfilePicture");
+                if(path != null){
+                    Image img = new Image(path);
+                    pozaProfil.setImage(img);
+                }
+            }else{
+                System.out.println("Erroare!");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            try{
+                if(con != null){
+                    con.close();
+                }
+            }catch (SQLException exception){
+                System.err.println("Eroare la închiderea conexiunii: " + exception.getMessage());
+            }
+        }
+        imagineCont.setText(primaLitera);
         meniuNavigare.setVisible(true);
         meniuNavigare.setTranslateX(-500);
         TranslateTransition slide = new TranslateTransition();
@@ -129,6 +167,10 @@ public class PaginaPrincipala implements Initializable {
     }
     public void afisareSetari(MouseEvent e) throws  IOException{
         new PaginaSetari().start();
+        inchideMeniu(e);
+    }
+    public void afisareCont(MouseEvent e) throws IOException{
+        new PaginaCont().start();
         inchideMeniu(e);
     }
     public void inchidePagina(ActionEvent e){
@@ -243,6 +285,8 @@ public class PaginaPrincipala implements Initializable {
             deconectareIcon.setVisible(false);
         });
         afisareDupaRol(obtineRol);
+        Circle clip = new Circle(35, 35, 35);
+        pozaProfil.setClip(clip);
     }
     public void start() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("paginaPrincipala.fxml"));
